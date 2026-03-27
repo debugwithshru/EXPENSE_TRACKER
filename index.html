@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Cocoon Group Tuition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <header>
+            <img src="./cocoon logo.webp" alt="Cocoon Logo" class="logo">
+            <h1 class="brand-name">COCOON GROUP TUITION</h1>
+            <h2 class="form-title">EXPENSE TRACKER</h2>
+        </header>
+
+        <form id="expenseForm">
+            <!-- SECTION 1: WHO & WHEN -->
+            <section>
+                <div class="section-title">SECTION 1 — WHO & WHEN</div>
+                
+                <div class="input-block">
+                    <div class="input-icon">👤</div>
+                    <div class="input-content">
+                        <div class="label-row">
+                            <span class="field-label">Paid by</span>
+                            <span class="required-tag">required</span>
+                        </div>
+                        <select id="paid_by_person" name="paid_by_person" required>
+                            <option value="" disabled selected>Select Person</option>
+                            <option value="Founder">Founder</option>
+                            <option value="Branch Head">Branch Head</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-row" style="margin-top:20px;">
+                    <div class="input-block">
+                        <div class="input-icon">📅</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Date of expense</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="date" id="expense_date" name="expense_date" required>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <div class="input-icon">🎓</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Academic Year</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="text" id="academic_year" name="academic_year" placeholder="e.g., 2026-27" required>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: EXPENSE DETAILS -->
+            <section>
+                <div class="section-title">SECTION 2 — EXPENSE DETAILS</div>
+
+                <!-- Row 1: Category + Vendor Name (Split) -->
+                <div class="grid-row">
+                    <div class="input-block">
+                        <div class="input-icon">🏷️</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Category</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <select id="category" name="category" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Salary / Advance">Salary / Advance</option>
+                                <option value="Stationery & Supplies">Stationery & Supplies</option>
+                                <option value="Employee Outing / Meals">Employee Outing / Meals</option>
+                                <option value="Student Activities">Student Activities</option>
+                                <option value="Marketing & Promotions">Marketing & Promotions</option>
+                                <option value="Travel & Transport">Travel & Transport</option>
+                                <option value="Utilities & Rent">Utilities & Rent</option>
+                                <option value="Tech & Software">Tech & Software</option>
+                                <option value="Repairs & Maintenance">Repairs & Maintenance</option>
+                                <option value="Study kit">Study kit</option>
+                                <option value="Professional fee">Professional fee</option>
+                                <option value="Incentives">Incentives</option>
+                                <option value="API cost">API cost</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <div class="input-icon">🏪</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Vendor Name</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="text" name="vendor_name" placeholder="Name of store/service" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Payment Mode + Amount (Split) -->
+                <div class="grid-row" style="margin-top:20px;">
+                    <div class="input-block">
+                        <div class="input-icon">💳</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Payment Mode</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <select name="payment_mode" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="UPI">UPI</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Cheque">Cheque</option>
+                                <option value="Bank_Transfer">Bank Transfer</option>
+                                <option value="Razorpay">Razorpay</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <div class="input-icon">₹</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Amount (₹)</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="number" name="amount" placeholder="0.00" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Description + Receipt Available (Split) -->
+                <div class="grid-row" style="margin-top:20px;">
+                    <div class="input-block">
+                        <div class="input-icon">📝</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Description</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="text" name="description" placeholder="What was this for?" required>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <div class="input-icon">🧾</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Receipt Available?</span>
+                            </div>
+                            <div class="radio-group" id="receipt_available_group" style="margin-top: 5px;">
+                                <label class="radio-option" style="padding: 5px 12px; font-size: 0.8rem;">
+                                    <input type="radio" name="receipt_available" value="Yes"> Yes
+                                </label>
+                                <label class="radio-option" style="padding: 5px 12px; font-size: 0.8rem;">
+                                    <input type="radio" name="receipt_available" value="No" checked> No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="receipt_upload_section" class="conditional-field">
+                    <div class="input-block" style="margin-top:20px;">
+                        <div class="input-icon">🖼️</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Attach Receipt</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <input type="file" id="receipt" name="receipt" accept="image/*,.pdf">
+                            <span class="sub-label">Image or PDF</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: PAYMENT & REIMBURSEMENT -->
+            <section>
+                <div class="section-title">SECTION 3 — PAYMENT & REIMBURSEMENT</div>
+
+                <div class="input-block">
+                    <div class="input-icon">💸</div>
+                    <div class="input-content">
+                        <div class="label-row">
+                            <span class="field-label">Payment Source</span>
+                            <span class="required-tag">required</span>
+                        </div>
+                        <div class="radio-group" id="paid_by_group">
+                            <label class="radio-option">
+                                <input type="radio" name="paid_by_source" value="Self" required> Self
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="paid_by_source" value="Company fund"> Company fund
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="paid_by_source" value="Petty cash"> Petty cash
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reimbursement_section" class="conditional-field">
+                    <div class="input-block" style="margin-top:20px;">
+                        <div class="input-icon">🔄</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Needs reimbursement?</span>
+                            </div>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="needs_reimbursement" value="Yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="needs_reimbursement" value="No" checked> No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW: Recurring Expense -->
+                <div class="input-block" style="margin-top:20px;">
+                    <div class="input-icon">🔁</div>
+                    <div class="input-content">
+                        <div class="label-row">
+                            <span class="field-label">Recurring Expense?</span>
+                        </div>
+                        <div class="radio-group" id="recurring_group">
+                            <label class="radio-option">
+                                <input type="radio" name="is_recurring" value="Yes"> Yes
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="is_recurring" value="No" checked> No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="recurring_frequency_section" class="conditional-field">
+                    <div class="input-block" style="margin-top:20px;">
+                        <div class="input-icon">🕒</div>
+                        <div class="input-content">
+                            <div class="label-row">
+                                <span class="field-label">Recurring Frequency</span>
+                                <span class="required-tag">required</span>
+                            </div>
+                            <select name="recurring_frequency">
+                                <option value="" disabled selected>Select Frequency</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quarterly">Quarterly</option>
+                                <option value="Annual">Annual</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="successOverlay" class="success-overlay">
+                <div class="success-card">
+                    <div class="success-icon">✓</div>
+                    <h2>EXPENSE SUBMITTED</h2>
+                    <p>Financial records have been updated.</p>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Expense Report</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
