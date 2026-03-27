@@ -37,13 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupToggle(recurringGroup, recurringFrequencySection, 'Yes', 'select[name="recurring_frequency"]');
     setupToggle(paymentSourceGroup, reimbursementSection, 'Self', 'input[name="needs_reimbursement"]');
 
-    // 4. File to Base64 Helper
-    const fileToBase64 = (file) => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
+    // 3. (Binary File Upload - No Base64 needed)
 
     // 5. Form Submission
     const WEBHOOK_URL = 'https://n8n.srv1498466.hstgr.cloud/webhook-test/43bb8f34-b5a0-4db3-b32b-caf76bf8d7df';
@@ -57,37 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const formData = new FormData(form);
-            const payload = {
-                paid_by: formData.get('paid_by_person'),
-                expense_date: formData.get('expense_date'),
-                academic_year: formData.get('academic_year'),
-                category: formData.get('category'),
-                vendor_name: formData.get('vendor_name'),
-                payment_mode: formData.get('payment_mode'),
-                amount: parseFloat(formData.get('amount')),
-                description: formData.get('description'),
-                receipt_available: formData.get('receipt_available'),
-                payment_source: formData.get('paid_by_source'),
-                needs_reimbursement: formData.get('needs_reimbursement') || 'No',
-                is_recurring: formData.get('is_recurring'),
-                recurring_frequency: formData.get('recurring_frequency') || 'N/A',
-                submission_time: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-            };
+            
+            // Re-map fields to clean keys for n8n if needed, 
+            // but FormData automatically includes all "name" attributes from the HTML.
+            // We just need to handle the conditional/composite ones.
+            
+            formData.set('submission_time', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
 
-            // Handle Receipt File
-            const file = receiptInput.files[0];
-            if (file) {
-                payload.receipt_base64 = await fileToBase64(file);
-                payload.receipt_filename = file.name;
-                payload.receipt_type = file.type;
-            }
-
-            console.log('Submitting Expense Payload:', payload);
+            console.log('Submitting Binary FormData...');
 
             const response = await fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: formData // No headers needed, browser sets multipart/form-data + boundary automatically
             });
 
             // Note: Since this is a filler URL, it might fail, but we'll show success for the UI demo purpose 
