@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('expenseForm');
     const dateInput = document.getElementById('expense_date');
     const academicYearInput = document.getElementById('academic_year');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. (Binary File Upload - No Base64 needed)
 
     // 5. Form Submission
-    const WEBHOOK_URL = 'https://n8n.srv1498466.hstgr.cloud/webhook-test/43bb8f34-b5a0-4db3-b32b-caf76bf8d7df';
+    const WEBHOOK_URL = 'https://n8n.srv1761768.hstgr.cloud/webhook-test/43bb8f34-b5a0-4db3-b32b-caf76bf8d7df';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
